@@ -1,14 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 
+import { RouterProvider } from 'react-router-dom';
+
+import router from './components/AppRouter';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Star wars
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <RouterProvider router={router} />
+        </div>
+    );
 }
 
 export default App;
