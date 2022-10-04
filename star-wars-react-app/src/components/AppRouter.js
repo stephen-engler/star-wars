@@ -21,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: 'person/:id',
                 element: <Person />
+            },
+            {
+                index: true,
+                element: <AllPlanets />
             }
         ]
     }

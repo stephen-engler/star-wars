@@ -1,10 +1,11 @@
 import { useCallback } from 'react';
 import axios from 'axios';
-import { useStore } from '../../context/StarWarsContext';
-
+//import { useStore } from '../../context/StarWarsContext';
+import { useMst } from '../../models/Root';
 const regex = new RegExp(/\d+/);
 const AllPlanetService = () => {
-    const store = useStore();
+    //const store = useStore();
+    const store = useMst();
     const getAllPlanets = useCallback(async () => {
         await getPlanetPage('https://swapi.dev/api/planets');
     }, []);
@@ -18,7 +19,7 @@ const AllPlanetService = () => {
                 id
             };
         });
-        store.setPlanets(formattedResponse);
+        store.addPlanets(formattedResponse);
         if (response.data.next) {
             await getPlanetPage(response.data.next);
         }

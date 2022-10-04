@@ -5,7 +5,7 @@ const regex = new RegExp(/\d+/);
 const PlanetService = () => {
     const getPlanet = useCallback(async (id) => {
         const response = await axios.get(`https://swapi.dev/api/planets/${id}`);
-
+        response.data.id = id;
         return response.data;
     }, []);
 
