@@ -1,6 +1,5 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-//import { useStore } from '../context/StarWarsContext';
 import { Link as RouterLink } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { useMst } from '../models/Root';

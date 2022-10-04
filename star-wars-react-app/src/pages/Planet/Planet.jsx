@@ -16,7 +16,9 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    Paper
+    Paper,
+    Card,
+    CardContent
 } from '@mui/material';
 
 const Planet = observer(() => {
@@ -60,9 +62,16 @@ const Planet = observer(() => {
         <div>
             {loading && <CircularProgress />}
             {store.planet && (
-                <Typography variant="h5" component="h5" color="primary">
-                    {store.planet.name}
-                </Typography>
+                <Card sx={{ minWidth: 275 }}>
+                    <CardContent>
+                        <Typography variant="h5" component="div">
+                            {store.planet.name}
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            Population: {store.planet.population}
+                        </Typography>
+                    </CardContent>
+                </Card>
             )}
             {store.people && (
                 <>

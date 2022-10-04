@@ -6,6 +6,11 @@ import { Person } from './Person';
 const RootModel = types
     .model({
         planets: types.array(Planet),
+        // tried making this a types.maybe(types.references(Planet)) here but ran into issues
+        // if user navigated to plaent page directly and there was no Planet to reference in the Planet array
+        // could get it to work by fetching all planets in that instance but didn't seem worth the loading time
+        // or maybe adding the one planet to the planet array so theirs a reference but would need to refactor how i'm
+        // adding to the planets array when fetching.
         planet: types.maybe(Planet),
         people: types.array(Person),
         person: types.maybe(Person)
