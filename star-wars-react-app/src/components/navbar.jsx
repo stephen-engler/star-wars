@@ -1,10 +1,10 @@
+import { Breadcrumbs, Divider, Grid, Link, Typography } from '@mui/material';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-//import { useStore } from '../context/StarWarsContext';
 import { Link as RouterLink } from 'react-router-dom';
-import { observer } from 'mobx-react-lite';
+
 import { useMst } from '../models/Root';
-import { Typography, Breadcrumbs, Link, Divider, Grid } from '@mui/material';
 const Navbar = observer(() => {
     const store = useMst();
 

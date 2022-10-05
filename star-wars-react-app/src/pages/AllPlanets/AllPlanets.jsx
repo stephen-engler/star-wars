@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import useAllPlanetService from './AllPlanetService';
-import { observer } from 'mobx-react-lite';
-import { Link } from 'react-router-dom';
-import { useMst } from '../../models/Root';
-import { toast } from 'react-toastify';
 import {
     CircularProgress,
-    TextField,
+    Paper,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
     TableRow,
-    Paper
+    TextField
 } from '@mui/material';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { useMst } from '../../models/Root';
+import useStarWarsService from '../../services/StarWarsService';
 
 const AllPlanets = observer(() => {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
-    const { getAllPlanets } = useAllPlanetService();
+    const { getAllPlanets } = useStarWarsService();
     const store = useMst();
 
     useEffect(() => {

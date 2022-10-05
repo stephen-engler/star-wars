@@ -3,7 +3,7 @@ import { types } from 'mobx-state-tree';
 export const Person = types.model({
     name: types.string,
     url: types.string,
-    id: types.number,
+    id: types.identifierNumber,
     height: types.string,
     mass: types.string,
     hair_color: types.string,

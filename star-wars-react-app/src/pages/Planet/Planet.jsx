@@ -1,37 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { useMst } from '../../models/Root';
-import { observer } from 'mobx-react-lite';
-import { useParams } from 'react-router-dom';
-import UsePlanetService from './PlanetService';
-import { Link } from 'react-router-dom';
-import { cloneDeep } from 'lodash';
-import { toast } from 'react-toastify';
 import { CircularProgress } from '@mui/material';
 import {
-    Typography,
-    TextField,
+    Card,
+    CardContent,
+    Paper,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
     TableRow,
-    Paper
+    TextField,
+    Typography
 } from '@mui/material';
+import { cloneDeep } from 'lodash';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { useMst } from '../../models/Root';
+import UseStarWarsServicee from '../../services/StarWarsService';
 
 const Planet = observer(() => {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
     const store = useMst();
     const { id } = useParams();
-    const { getPlanet, getPeople } = UsePlanetService();
+    const { getPlanet, getPeople } = UseStarWarsServicee();
 
     useEffect(() => {
         (async () => {
             try {
                 let planet = store.getPlanet(+id);
                 if (planet) {
-                    // to do check if planet is already in store
                     store.setPlanet(cloneDeep(planet));
                     const peopleResponse = await getPeople(planet.residents);
                     store.setPeople(peopleResponse);
@@ -60,9 +62,16 @@ const Planet = observer(() => {
         <div>
             {loading && <CircularProgress />}
             {store.planet && (
-                <Typography variant="h5" component="h5" color="primary">
-                    {store.planet.name}
-                </Typography>
+                <Card sx={{ minWidth: 275 }}>
+                    <CardContent>
+                        <Typography variant="h5" component="div">
+                            {store.planet.name}
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            Population: {store.planet.population}
+                        </Typography>
+                    </CardContent>
+                </Card>
             )}
             {store.people && (
                 <>

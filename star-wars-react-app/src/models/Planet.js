@@ -3,7 +3,7 @@ import { types } from 'mobx-state-tree';
 export const Planet = types.model({
     name: types.string,
     url: types.string,
-    id: types.maybe(types.number),
+    id: types.identifierNumber,
     climate: types.string,
     diameter: types.string,
     gravity: types.string,

@@ -1,11 +1,17 @@
 import { onSnapshot, types } from 'mobx-state-tree';
 import { createContext, useContext } from 'react';
-import { Planet } from './Planet';
+
 import { Person } from './Person';
-//import cloneDeep from 'lodash';
+import { Planet } from './Planet';
+
 const RootModel = types
     .model({
         planets: types.array(Planet),
+        // tried making this a types.maybe(types.references(Planet)) here but ran into issues
+        // if user navigated to planet page directly and there was no Planet to reference in the Planets array
+        // could get it to work by fetching all planets first but didn't seem worth the loading time
+        // or maybe adding the one planet to the planet array so theirs a reference but would need to refactor how i'm
+        // adding to the planets array when fetching.
         planet: types.maybe(Planet),
         people: types.array(Person),
         person: types.maybe(Person)
