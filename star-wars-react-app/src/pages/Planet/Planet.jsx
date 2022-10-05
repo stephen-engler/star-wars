@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMst } from '../../models/Root';
 import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
-import UsePlanetService from './PlanetService';
+import UseStarWarsServicee from '../../services/StarWarsService';
 import { Link } from 'react-router-dom';
 import { cloneDeep } from 'lodash';
 import { toast } from 'react-toastify';
@@ -26,14 +26,13 @@ const Planet = observer(() => {
     const [search, setSearch] = useState('');
     const store = useMst();
     const { id } = useParams();
-    const { getPlanet, getPeople } = UsePlanetService();
+    const { getPlanet, getPeople } = UseStarWarsServicee();
 
     useEffect(() => {
         (async () => {
             try {
                 let planet = store.getPlanet(+id);
                 if (planet) {
-                    // to do check if planet is already in store
                     store.setPlanet(cloneDeep(planet));
                     const peopleResponse = await getPeople(planet.residents);
                     store.setPeople(peopleResponse);

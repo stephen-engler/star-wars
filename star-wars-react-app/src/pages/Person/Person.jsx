@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
-import UsePersonService from './PersonService';
+import UseStarWarsService from '../../services/StarWarsService';
 import { useMst } from '../../models/Root';
 import { toast } from 'react-toastify';
 import { cloneDeep } from 'lodash';
@@ -12,7 +12,7 @@ const Planet = observer(() => {
     const [loading, setLoading] = useState(true);
     const store = useMst();
     const { id } = useParams();
-    const { getPerson } = UsePersonService();
+    const { getPerson } = UseStarWarsService();
 
     useEffect(() => {
         (async () => {
@@ -31,7 +31,7 @@ const Planet = observer(() => {
                 setLoading(false);
             }
         })();
-    }, []);
+    }, [getPerson, store, id]);
 
     return (
         <div>

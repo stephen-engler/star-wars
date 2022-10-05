@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createBrowserRouter } from 'react-router-dom';
 import AllPlanets from '../pages/AllPlanets/AllPlanets';
-import Navbar from './navbar';
+import Navbar from './NavBar';
 import Planet from '../pages/Planet/Planet';
 import Person from '../pages/Person/Person';
 const router = createBrowserRouter([

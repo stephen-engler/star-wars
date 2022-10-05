@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import useAllPlanetService from './AllPlanetService';
+//import useAllPlanetService from './AllPlanetService';
+import useStarWarsService from '../../services/StarWarsService';
 import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 import { useMst } from '../../models/Root';
@@ -19,7 +20,7 @@ import {
 const AllPlanets = observer(() => {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
-    const { getAllPlanets } = useAllPlanetService();
+    const { getAllPlanets } = useStarWarsService();
     const store = useMst();
 
     useEffect(() => {
