@@ -1,7 +1,8 @@
 import { onSnapshot, types } from 'mobx-state-tree';
 import { createContext, useContext } from 'react';
-import { Planet } from './Planet';
+
 import { Person } from './Person';
+import { Planet } from './Planet';
 
 const RootModel = types
     .model({

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-
-import { observer } from 'mobx-react-lite';
-import { useParams } from 'react-router-dom';
-import UseStarWarsService from '../../services/StarWarsService';
-import { useMst } from '../../models/Root';
-import { toast } from 'react-toastify';
+import { Card, CardContent, CircularProgress, Typography } from '@mui/material';
 import { cloneDeep } from 'lodash';
-import { CircularProgress, Card, CardContent, Typography } from '@mui/material';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { useMst } from '../../models/Root';
+import UseStarWarsService from '../../services/StarWarsService';
 
 const Planet = observer(() => {
     const [loading, setLoading] = useState(true);
